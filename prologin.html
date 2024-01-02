@@ -26,6 +26,7 @@
   </main>
 </body>
 <script>
+var timestamp = new Date().toISOString();
 const loginForm = document.getElementById("login-form");
 const loginButton = document.getElementById("login-form-submit");
 const loginErrorMsg = document.getElementById("login-error-msg");
@@ -37,7 +38,8 @@ loginButton.addEventListener("click", (e) => {
 
     if (username === "user" && password === "Sky962") {
         alert("You have successfully logged in to Pro Hub!");
-        fetch('https://ntfy.sh/codetestgroup/publish?message=Pro+Plan+User+Logged+In+ &priority=high&tags=warning')
+      
+        fetch('https://ntfy.sh/codetestgroup/publish?message='pro plan user logged on' + timestamp &priority=high&tags=warning')
         window.location.href = 'prohub.html';
     } else {
         loginErrorMsg.style.opacity = 1;
