@@ -53,8 +53,8 @@
 
 <nav>
   <a onclick="loadContent('home')">Home</a>
-  <a id="flappyBirdLink">FlappyBird</a>
-  <a id="crossyRoadLink">CrossyRoad</a>
+  <a id="flappyBirdLink">Game 1</a>
+  <a onclick="loadContent('game2')">Game 2</a>
 </nav>
 
 <main id="content">
@@ -83,9 +83,7 @@
 
   // Attach the flappybird function to the onclick event
   document.getElementById('flappyBirdLink').onclick = flappybird;
-  document.getElementById('crossyRoadLink').onclick = crossyroad;
 
-  
   function flappybird() {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -114,37 +112,6 @@
 
     // Adjust the path to flappybird.html based on your directory structure
     xhr.open('GET', 'flappybird.html', true);
-    xhr.send();
-  }
-
-  function crossyroad() {
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          // Create an iframe and set its content
-          const iframe = document.createElement('iframe');
-          iframe.setAttribute('src', 'about:blank');
-          iframe.style.width = '100%';
-          iframe.style.height = '1000px';
-
-          // Append the iframe to the parent container
-          document.getElementById('content').innerHTML = '';
-          document.getElementById('content').appendChild(iframe);
-
-          // Write content to the iframe document
-          const doc = iframe.contentDocument || iframe.contentWindow.document;
-          doc.open();
-          doc.write(xhr.responseText);
-          doc.close();
-        } else {
-          console.error('Failed to load CrossyRoad content. Status:', xhr.status);
-        }
-      }
-    };
-
-    // Adjust the path to flappybird.html based on your directory structure
-    xhr.open('GET', 'crossyroad.html', true);
     xhr.send();
   }
 </script>
