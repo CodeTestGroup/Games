@@ -12,4 +12,4 @@
             <li><strong>Personalize Your Gaming Space:</strong> Unlock additional customization options! members can personalize their gaming experience with unique avatars, themes, and cosmetic enhancements.</li>
             <li><strong>Beta Testing Privileges:</strong> Get a sneak peek behind the scenes! members are invited to participate in beta testing for upcoming games and features, contributing to the evolution of our gaming universe.</li>
         </ul>
-<h2>If you are intrested fill in these textboxes:</h2>
+<h2>If you are intrested click <a href="pro.html">Here</a></h2>
