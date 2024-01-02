@@ -1,1 +1,0 @@
- <iframe src="flappybird.html" width="431" height="768" frameborder="0" sandbox ></iframe>
