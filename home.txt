@@ -2,8 +2,8 @@
 <p>We have lots of games!</p>
 
 
-<p>We also have a Paid Version too!</p>
- <h2>Reasons to Upgrade for only £1.99 a month!:</h2>
+<p></p>
+ <h2>Reasons to Upgrade to pro for only £1.99 a month!: (if you have already paid please click <a href="prologin.html">Here</a> to goto the login page!)</h2>
         <ul>
             <li><strong>Access Exclusive Games and Levels:</strong> Dive into a world of premium content with exclusive games and levels only available to Pro members.</li>
             <li><strong>Priority Support:</strong> members receive top-notch customer support. Your queries and concerns become our top priority for swift resolution.</li>
@@ -13,3 +13,4 @@
             <li><strong>Beta Testing Privileges:</strong> Get a sneak peek behind the scenes! members are invited to participate in beta testing for upcoming games and features, contributing to the evolution of our gaming universe.</li>
         </ul>
 <h2>If you are intrested click <a href="pro.html">Here</a></h2>
+ 
