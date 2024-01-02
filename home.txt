@@ -1,1 +1,2 @@
-<p>gg</p>
+<h1>Welcome to The CodeTestGroup Games website</h1>
+<p>We have lots of games!</p>
