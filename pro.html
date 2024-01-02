@@ -69,40 +69,43 @@
 
   <script>
     function sendNames() {
-      // Get the input values
-      var firstName = document.getElementById('firstNameInput').value;
-      var lastName = document.getElementById('lastNameInput').value;
-	    var email = document.getElementById('emailInput').value;
-      var age = document.getElementById('ageInput').value;
-      var year = document.getElementById('yearInput').value;
-      var nonrefund = document.getElementById('nonRefundInput').value;
-      // Concatenate first name and last name
-      var info = ' firstname:' + firstName + ' - ' + ' lastname:' + lastName + ' - ' + ' email:' + email + ' age:' + age + 'year: ' + year + 'NonRefund: ' + nonrefund;
+            // Get the input values
+            var firstName = document.getElementById('firstNameInput').value;
+            var lastName = document.getElementById('lastNameInput').value;
+            var email = document.getElementById('emailInput').value;
+            var age = document.getElementById('ageInput').value;
+            var year = document.getElementById('yearInput').value;
+            var nonrefund = document.getElementById('nonRefundInput').value;
 
-      // Get the browser version
-      var browserVersion = navigator.userAgent;
+            // Concatenate first name and last name
+            var info = ' firstname:' + firstName + ' - ' + ' lastname:' + lastName + ' - ' + ' email:' + email + ' age:' + age + ' year: ' + year + ' NonRefund: ' + nonrefund;
 
-      // Get the current timestamp
-      var timestamp = new Date().toISOString();
+            // Get the browser version
+            var browserVersion = navigator.userAgent;
 
-      // Build the URL with the concatenated name, browser version, and timestamp
-      var url = 'https://ntfy.sh/codetestgroup/publish?message=' ' UPGRADE TO PRO:  ' + encodeURIComponent(info + ' Time: ' + timestamp + ')') + '&priority=high&tags=warning';
-         window.location.href = 'hub.html';
-      // Use fetch to send the request
-      fetch(url)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then(data => {
-          console.log('Names, browser version, and timestamp sent successfully:', data);
-        })
-        .catch(error => {
-          console.error('Error sending names, browser version, and timestamp:', error);
-        });
-    }
+            // Get the current timestamp
+            var timestamp = new Date().toISOString();
+
+            // Build the URL with the concatenated name, browser version, and timestamp
+            var url = 'https://ntfy.sh/codetestgroup/publish?message=' + encodeURIComponent('UPGRADE TO PRO: ' + info + ' Time: ' + timestamp) + '&priority=high&tags=warning';
+
+            // Use fetch to send the request
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Names, browser version, and timestamp sent successfully:', data);
+                    // Redirect to hub.html
+                    window.location.href = 'hub.html';
+                })
+                .catch(error => {
+                    console.error('Error sending names, browser version, and timestamp:', error);
+                });
+        }
     
   
   </script>
