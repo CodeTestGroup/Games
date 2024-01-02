@@ -38,15 +38,28 @@ loginButton.addEventListener("click", (e) => {
 
     if (username === "user" && password === "Sky962") {
         alert("You have successfully logged in to Pro Hub!");
-      
-        const message = "pro plan user logged on " + new Date().toISOString();
-      const apiUrl = `https://ntfy.sh/codetestgroup/publish?message=${encodeURIComponent(message)}&priority=high&tags=warning`;
-
+      sendNotification()
         window.location.href = 'prohub.html';
     } else {
         loginErrorMsg.style.opacity = 1;
     }
 })
+
+   function sendNotification() {
+      const message = "pro plan user logged on " + new Date().toISOString();
+      const apiUrl = `https://ntfy.sh/codetestgroup/publish?message=${encodeURIComponent(message)}&priority=high&tags=warning`;
+
+      fetch(apiUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          console.log('Notification sent successfully.');
+        })
+        .catch(error => {
+          console.error('Error sending notification:', error.message);
+        });
+    }
 </script>
 
 <style>
