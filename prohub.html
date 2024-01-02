@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pro Games</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Welcome to Pro Games</h1>
+</header>
+
+<nav>
+  <button onclick="loadGame('redgreen2')">Red And Green 2</button>
+  <button onclick="loadGame('game2')">Game 2</button>
+</nav>
+
+<main id="content">
+  <!-- Content will be loaded here dynamically -->
+</main>
+
+<footer>
+  <p>&copy; 2024 Pro Games</p>
+</footer>
+
+<script>
+  function loadGame(game) {
+  const xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      // Create an iframe and set its content
+      const iframe = document.createElement('iframe');
+      iframe.setAttribute('src', 'about:blank');
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+
+      // Append the iframe to the parent container
+      document.getElementById('content').innerHTML = '';
+      document.getElementById('content').appendChild(iframe);
+
+      // Write content to the iframe document
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      doc.open();
+      doc.write(xhr.responseText);
+      doc.close();
+    } else {
+      console.error(`Failed to load ${game}. Status:`, xhr.status);
+    }
+  };
+
+  // Adjust the path based on your directory structure
+  xhr.open('GET', `${game}.html`, true);
+  xhr.send();
+}
+
+</script>
+
+</body>
+</html>
