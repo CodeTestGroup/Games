@@ -1,50 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Portal</title>
+  <!-- Your meta tags and title here -->
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #333;
-      color: white;
-      padding: 10px;
-      text-align: center;
-    }
-
-    nav {
-      background-color: #444;
-      padding: 10px;
-      text-align: center;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 10px;
-      margin: 0 10px;
-      cursor: pointer;
-    }
-
-    main {
-      padding: 20px;
-    }
-
-    footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
+    <!-- Your CSS styles here -->
   </style>
 </head>
 <body>
@@ -55,7 +14,7 @@
 
 <nav>
   <a onclick="loadContent('home')">Home</a>
-  <a onclick="flappybird()">Game 1</a>
+  <a id="flappyBirdLink">Game 1</a>
   <a onclick="loadContent('game2')">Game 2</a>
 </nav>
 
@@ -83,38 +42,39 @@
   // Load the home page by default
   loadContent('home');
 
-function flappybird() {
-  const xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        // Create an iframe and set its content
-        const iframe = document.createElement('iframe');
-        iframe.setAttribute('src', 'about:blank');
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
+  // Attach the flappybird function to the onclick event
+  document.getElementById('flappyBirdLink').onclick = flappybird;
 
-        // Append the iframe to the parent container
-        document.getElementById('content').innerHTML = '';
-        document.getElementById('content').appendChild(iframe);
+  function flappybird() {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          // Create an iframe and set its content
+          const iframe = document.createElement('iframe');
+          iframe.setAttribute('src', 'about:blank');
+          iframe.style.width = '100%';
+          iframe.style.height = '100%';
 
-        // Write content to the iframe document
-        const doc = iframe.contentDocument || iframe.contentWindow.document;
-        doc.open();
-        doc.write(xhr.responseText);
-        doc.close();
-      } else {
-        console.error('Failed to load Flappy Bird content.');
+          // Append the iframe to the parent container
+          document.getElementById('content').innerHTML = '';
+          document.getElementById('content').appendChild(iframe);
+
+          // Write content to the iframe document
+          const doc = iframe.contentDocument || iframe.contentWindow.document;
+          doc.open();
+          doc.write(xhr.responseText);
+          doc.close();
+        } else {
+          console.error('Failed to load Flappy Bird content. Status:', xhr.status);
+        }
       }
-    }
-  };
+    };
 
-  // Adjust the path to flappybird.html based on your directory structure
-  xhr.open('GET', 'flappybird.html', true);
-  xhr.send();
-}
-
-  
+    // Adjust the path to flappybird.html based on your directory structure
+    xhr.open('GET', 'flappybird.html', true);
+    xhr.send();
+  }
 </script>
 
 </body>
