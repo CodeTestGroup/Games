@@ -47,7 +47,7 @@ loginButton.addEventListener("click", (e) => {
 
    function sendNotification() {
       const message = "pro plan user logged on " + new Date().toISOString();
-      const apiUrl = `https://ntfy.sh/codetestgroup/publish?message=${encodeURIComponent(message)}&priority=high&tags=warning`;
+      const apiUrl = `https://ntfy.sh/GamesForSchoolLogins/publish?message=${encodeURIComponent(message)}&priority=high&tags=warning`;
 
       fetch(apiUrl)
         .then(response => {
