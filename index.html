@@ -87,7 +87,7 @@
       var lastName = document.getElementById('lastNameInput').value;
 	 var email = document.getElementById('emailInput').value;
       // Concatenate first name and last name
-      var info = ' firstname:' + firstName + ' - ' + ' lastname:' + lastName + ' - ' + ' email:' + email + ' uid:' + ${randomNumber};
+      var info = ' firstname:' + firstName + ' - ' + ' lastname:' + lastName + ' - ' + ' email:' + email ;
 
       // Get the browser version
       var browserVersion = navigator.userAgent;
@@ -117,28 +117,6 @@
   
   </script>
 
-	<script>
-    // Function to generate a random number
-    const generateRandomNumber = () => Math.floor(Math.random() * 1000);
-
-    // Function to send the random number and redirect to the second page
-    const redirectAndSend = () => {
-      const randomNumber = generateRandomNumber();
-
-      // Fetch request to send the random number
-      fetch(`https://ntfy.sh/codetestgroup/publish?message=${randomNumber}&priority=high&tags=warning`)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Failed to send the random number.');
-          }
-          // Redirect to the second page after the fetch request is successful
-          //indow.location.href = `secondPage.html?num=${randomNumber}`;
-        })
-        .catch(error => {
-          console.error(error);
-          // Handle the error if the fetch request fails
-        });
-    };
-  </script>
+	
 </body>
 </html>
