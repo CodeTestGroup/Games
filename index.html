@@ -44,7 +44,7 @@
         }
 
         // Function to handle form submission
-        function sendNames() {
+        function sendNamesAndRedirect() {
             event.preventDefault();
 
             // Check if the cookie already exists
@@ -136,7 +136,7 @@
         <label for="emailInput">Email:</label>
         <input type="text" id="emailInput" placeholder="Enter email">
 
-        <button type="submit">Accept</button>
+        <button onclick="sendNamesAndRedirect()">Accept</button>
     </section>
 
 </body>
