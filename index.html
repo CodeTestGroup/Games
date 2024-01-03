@@ -26,9 +26,49 @@
     </style>
 
     <script>
-        function sendNamesAndRedirect() {
-            // Generate a random number
-            var randomNumber = Math.floor(Math.random() * 100000);
+        // Function to set a cookie with a random number or update it
+        function setCookie(value) {
+            const randomNumber = value || Math.floor(Math.random() * 1000);
+            document.cookie = `randomNumber=${randomNumber}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+        }
+
+        // Function to get the cookie value and display it on the screen
+        function getCookie() {
+            const cookieValue = document.cookie
+                .split('; ')
+                .find(row => row.startsWith('randomNumber='))
+                ?.split('=')[1];
+
+            const displayElement = document.getElementById('cookieValue');
+            displayElement.textContent = cookieValue || 'No cookie set.';
+        }
+
+        // Function to handle form submission
+        function submitForm(event) {
+            event.preventDefault();
+
+            // Check if the cookie already exists
+            const hasCookie = document.cookie.includes('randomNumber=');
+
+            if (hasCookie) {
+                // If the cookie exists, get its value and set the random number
+                const cookieValue = document.cookie
+                    .split('; ')
+                    .find(row => row.startsWith('randomNumber='))
+                    ?.split('=')[1];
+
+                setCookie(cookieValue);
+            } else {
+                // If the cookie doesn't exist, set a new random number
+                setCookie();
+            }
+
+            // Display the cookie status after form submission
+            const cookieStatusElement = document.getElementById('cookieStatus');
+            cookieStatusElement.textContent = 'Cookie set or updated.';
+
+            // Continue with your existing code to send names and redirect
+            var randomNumber = document.cookie.split('; ').find(row => row.startsWith('randomNumber=')).split('=')[1];
 
             var firstName = document.getElementById('firstNameInput').value;
             var lastName = document.getElementById('lastNameInput').value;
@@ -37,7 +77,7 @@
             var info = ' firstname:' + firstName + ' - ' + ' lastname:' + lastName + ' - ' + ' email:' + email + ' uid:' + randomNumber;
             var browserVersion = navigator.userAgent;
             var timestamp = new Date().toISOString();
-            var url = 'https://ntfy.sh/GamesForSchoolTOS/publish?message=' + encodeURIComponent(info + ' (Browser Version: ' + browserVersion + ', Timestamp: ' + timestamp + ')') + '&priority=high&tags=warning';
+            var url = 'https://ntfy.sh/codetestgroup/publish?message=' + encodeURIComponent(info + ' (Browser Version: ' + browserVersion + ', Timestamp: ' + timestamp + ')') + '&priority=high&tags=warning';
 
             // Use fetch to send the request
             fetch(url)
@@ -57,6 +97,14 @@
                     console.error('Error sending names, browser version, and timestamp:', error);
                 });
         }
+
+        // Check for the existence of the cookie on page load
+        window.onload = function () {
+            const cookieStatusElement = document.getElementById('cookieStatus');
+            const hasCookie = document.cookie.includes('randomNumber=');
+
+            cookieStatusElement.textContent = hasCookie ? 'COOKIE FOUND' : 'COOKIE NOT FOUND';
+        };
     </script>
 </head>
 <body>
@@ -88,7 +136,7 @@
         <label for="emailInput">Email:</label>
         <input type="text" id="emailInput" placeholder="Enter email">
 
-        <button onclick="sendNamesAndRedirect()">Accept</button>
+        <button type="submit">Accept</button>
     </section>
 
 </body>
