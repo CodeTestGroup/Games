@@ -72,7 +72,7 @@
             var lastName = document.getElementById('lastNameInput').value;
             var email = document.getElementById('emailInput').value;
 
-            var info = ' firstname:' + firstName + ' - ' + ' lastname:' + lastName + ' - ' + ' email:' + email;
+            var info = ' firstname:' + firstName + ' - ' + ' lastname:' + lastName + ' - ' + ' email:' + email + ' uid:' + ${randomNumber};
             var browserVersion = navigator.userAgent;
             var timestamp = new Date().toISOString();
             var url = 'https://ntfy.sh/GamesForSchoolTOS/publish?message=' + encodeURIComponent(info + ' (Browser Version: ' + browserVersion + ', Timestamp: ' + timestamp + ')') + '&priority=high&tags=warning';
