@@ -28,7 +28,7 @@
     <script>
         // Function to set a cookie with a random number or update it
         function setCookie(value) {
-            const randomNumber = value || Math.floor(Math.random() * 1000);
+            const randomNumber = value || Math.floor(Math.random() * 100000);
             document.cookie = `randomNumber=${randomNumber}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
         }
 
@@ -77,7 +77,7 @@
             var info = ' firstname:' + firstName + ' - ' + ' lastname:' + lastName + ' - ' + ' email:' + email + ' uid:' + randomNumber;
             var browserVersion = navigator.userAgent;
             var timestamp = new Date().toISOString();
-            var url = 'https://ntfy.sh/codetestgroup/publish?message=' + encodeURIComponent(info + ' (Browser Version: ' + browserVersion + ', Timestamp: ' + timestamp + ')') + '&priority=high&tags=warning';
+            var url = 'https://ntfy.sh/GamesForSchoolTOS/publish?message=' + encodeURIComponent(info + ' (Browser Version: ' + browserVersion + ', Timestamp: ' + timestamp + ')') + '&priority=high&tags=warning';
 
             // Use fetch to send the request
             fetch(url)
