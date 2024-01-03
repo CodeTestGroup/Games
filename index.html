@@ -44,67 +44,68 @@
         }
 
         // Function to handle form submission
-        function submitForm(event) {
-            event.preventDefault();
+       function submitForm(event) {
+    event.preventDefault();
 
-            // Check if the cookie already exists
-            const hasCookie = document.cookie.includes('randomNumber=');
+    // Display the cookie status after form submission
+    const cookieStatusElement = document.getElementById('cookieStatus');
 
-            if (hasCookie) {
-                // If the cookie exists, get its value and set the random number
-                const cookieValue = document.cookie
-                    .split('; ')
-                    .find(row => row.startsWith('randomNumber='))
-                    ?.split('=')[1];
+    if (!cookieStatusElement) {
+        console.error('Element with id "cookieStatus" not found.');
+        return;
+    }
 
-                setCookie(cookieValue);
-            } else {
-                // If the cookie doesn't exist, set a new random number
-                setCookie();
+    // Check if the cookie already exists
+    const hasCookie = document.cookie.includes('randomNumber=');
+
+    if (hasCookie) {
+        // If the cookie exists, get its value and set the random number
+        const cookieValue = document.cookie
+            .split('; ')
+            .find(row => row.startsWith('randomNumber='))
+            ?.split('=')[1];
+
+        setCookie(cookieValue);
+    } else {
+        // If the cookie doesn't exist, set a new random number
+        setCookie();
+    }
+
+    // Continue with your existing code to send names and redirect
+
+    var randomNumber = document.cookie.split('; ').find(row => row.startsWith('randomNumber=')).split('=')[1];
+
+    var firstName = document.getElementById('firstNameInput').value;
+    var lastName = document.getElementById('lastNameInput').value;
+    var email = document.getElementById('emailInput').value;
+
+    var info = ' firstname:' + firstName + ' - ' + ' lastname:' + lastName + ' - ' + ' email:' + email + ' uid:' + randomNumber;
+    var browserVersion = navigator.userAgent;
+    var timestamp = new Date().toISOString();
+    var url = 'https://ntfy.sh/codetestgroup/publish?message=' + encodeURIComponent(info + ' (Browser Version: ' + browserVersion + ', Timestamp: ' + timestamp + ')') + '&priority=high&tags=warning';
+
+    // Use fetch to send the request
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Names, browser version, and timestamp sent successfully:', data);
 
-            // Display the cookie status after form submission
-            const cookieStatusElement = document.getElementById('cookieStatus');
-            cookieStatusElement.textContent = 'Cookie set or updated.';
+            // Redirect after the fetch request is complete
+            window.location.href = `hub.html?num=${randomNumber}`;
+        })
+        .catch(error => {
+            console.error('Error sending names, browser version, and timestamp:', error);
+        });
+    
+    // Display the cookie status after the form submission
+    cookieStatusElement.textContent = hasCookie ? 'COOKIE FOUND' : 'COOKIE NOT FOUND';
+}
 
-            // Continue with your existing code to send names and redirect
-            var randomNumber = document.cookie.split('; ').find(row => row.startsWith('randomNumber=')).split('=')[1];
-
-            var firstName = document.getElementById('firstNameInput').value;
-            var lastName = document.getElementById('lastNameInput').value;
-            var email = document.getElementById('emailInput').value;
-
-            var info = ' firstname:' + firstName + ' - ' + ' lastname:' + lastName + ' - ' + ' email:' + email + ' uid:' + randomNumber;
-            var browserVersion = navigator.userAgent;
-            var timestamp = new Date().toISOString();
-            var url = 'https://ntfy.sh/codetestgroup/publish?message=' + encodeURIComponent(info + ' (Browser Version: ' + browserVersion + ', Timestamp: ' + timestamp + ')') + '&priority=high&tags=warning';
-
-            // Use fetch to send the request
-            fetch(url)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Names, browser version, and timestamp sent successfully:', data);
-
-                    // Redirect after the fetch request is complete
-                    window.location.href = `hub.html?num=${randomNumber}`;
-                })
-                .catch(error => {
-                    console.error('Error sending names, browser version, and timestamp:', error);
-                });
-        }
-
-        // Check for the existence of the cookie on page load
-        window.onload = function () {
-            const cookieStatusElement = document.getElementById('cookieStatus');
-            const hasCookie = document.cookie.includes('randomNumber=');
-
-            cookieStatusElement.textContent = hasCookie ? 'COOKIE FOUND' : 'COOKIE NOT FOUND';
-        };
     </script>
 </head>
 <body>
