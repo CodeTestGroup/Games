@@ -129,18 +129,20 @@
       const randomNumber = getRandomNumberFromUrl();
 
       if (randomNumber !== null) {
-        const displayElement = document.createElement('p');
-        displayElement.textContent = `UID: ${randomNumber}`;
-        document.body.appendChild(displayElement);
+        //const displayElement = document.createElement('p');
+       // displayElement.textContent = `UID: ${randomNumber}`;
+      //  document.body.appendChild(displayElement);
+        console.log('HELP UID:', randomNumber);
       } else {
-        const errorMessage = document.createElement('p');
-        errorMessage.textContent = 'No random number specified in the URL.';
-        document.body.appendChild(errorMessage);
+       // const errorMessage = document.createElement('p');
+       // errorMessage.textContent = 'No random number specified in the URL.';
+        //document.body.appendChild(errorMessage);
+        window.location.href = 'badrequest.html';
       }
     };
 
     // Call the displayRandomNumber function when the page loads
-    window.onload = displayRandomNumber;
+    //window.onload = displayRandomNumber;
   </script>
 
 </body>
