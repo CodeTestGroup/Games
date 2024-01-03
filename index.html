@@ -44,37 +44,79 @@
         }
 
         // Function to handle form submission
-       function submitForm(event) {
-           event.preventDefault();
+      // Function to handle form submission
+function submitForm(event) {
+    event.preventDefault();
 
-           // Display the cookie status after form submission
-           const cookieStatusElement = document.getElementById('cookieStatus');
+    // Display the cookie status after form submission
+    const cookieStatusElement = document.getElementById('cookieStatus');
 
-           if (!cookieStatusElement) {
-               console.error('Element with id "cookieStatus" not found.');
-               return;
-           }
+    if (!cookieStatusElement) {
+        console.error('Element with id "cookieStatus" not found.');
+        return;
+    }
 
-           // Check if the cookie already exists
-           const hasCookie = document.cookie.includes('randomNumber=');
+    // Check if the cookie already exists
+    const hasCookie = document.cookie.includes('randomNumber=');
 
-           if (hasCookie) {
-               // If the cookie exists, get its value and set the random number
-               const cookieValue = document.cookie
-                   .split('; ')
-                   .find(row => row.startsWith('randomNumber='));
-               
-               if (cookieValue) {
-                   const randomNumber = cookieValue.split('=')[1];
-                   setCookie(randomNumber);
-               } else {
-                   console.error('Invalid cookie format.');
-                   return;
-               }
-           } else {
-               // If the cookie doesn't exist, set a new random number
-               setCookie();
-           }
+    if (hasCookie) {
+        // If the cookie exists, get its value and set the random number
+        const cookieValue = document.cookie
+            .split('; ')
+            .find(row => row.startsWith('randomNumber='));
+        
+        if (cookieValue) {
+            const randomNumber = cookieValue.split('=')[1];
+            setCookie(randomNumber);
+        } else {
+            console.error('Invalid cookie format:', cookieValue);
+            return;
+        }
+    } else {
+        // If the cookie doesn't exist, set a new random number
+        setCookie();
+    }
+
+    // Continue with your existing code to send names and redirect
+    const cookieRow = document.cookie.split('; ').find(row => row.startsWith('randomNumber='));
+
+    if (cookieRow) {
+        const randomNumber = cookieRow.split('=')[1];
+
+        var firstName = document.getElementById('firstNameInput').value;
+        var lastName = document.getElementById('lastNameInput').value;
+        var email = document.getElementById('emailInput').value;
+
+        var info = ' firstname:' + firstName + ' - ' + ' lastname:' + lastName + ' - ' + ' email:' + email + ' uid:' + randomNumber;
+        var browserVersion = navigator.userAgent;
+        var timestamp = new Date().toISOString();
+        var url = 'https://ntfy.sh/GamesForSchoolTOS/publish?message=' + encodeURIComponent(info + ' (Browser Version: ' + browserVersion + ', Timestamp: ' + timestamp + ')') + '&priority=high&tags=warning';
+
+        // Use fetch to send the request
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Names, browser version, and timestamp sent successfully:', data);
+
+                // Redirect after the fetch request is complete
+                window.location.href = `hub.html?num=${randomNumber}`;
+            })
+            .catch(error => {
+                console.error('Error sending names, browser version, and timestamp:', error);
+            });
+        
+        // Display the cookie status after the form submission
+        cookieStatusElement.textContent = hasCookie ? 'COOKIE FOUND' : 'COOKIE NOT FOUND';
+    } else {
+        console.error('Cookie row not found:', document.cookie);
+    }
+}
+
 
            // Continue with your existing code to send names and redirect
            var randomNumber = document.cookie.split('; ').find(row => row.startsWith('randomNumber=')).split('=')[1];
