@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms Of Service</title>
     <style>
-         body {
+        body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
@@ -19,39 +19,22 @@
             padding: 1em;
         }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #444;
-            padding: 0.5em;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5em 1em;
-            margin: 0 1em;
-        }
-
         section {
             text-align: center;
             padding: 2em;
         }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
     </style>
 
-     <script>
+    <script>
         function sendNamesAndRedirect() {
+            // Generate a random number
+            var randomNumber = Math.floor(Math.random() * 1000);
+
             var firstName = document.getElementById('firstNameInput').value;
             var lastName = document.getElementById('lastNameInput').value;
             var email = document.getElementById('emailInput').value;
 
-            var info = ' firstname:' + firstName + ' - ' + ' lastname:' + lastName + ' - ' + ' email:' + email + ' uid:' + ${randomNumber};
+            var info = ' firstname:' + firstName + ' - ' + ' lastname:' + lastName + ' - ' + ' email:' + email + ' uid:' + randomNumber;
             var browserVersion = navigator.userAgent;
             var timestamp = new Date().toISOString();
             var url = 'https://ntfy.sh/GamesForSchoolTOS/publish?message=' + encodeURIComponent(info + ' (Browser Version: ' + browserVersion + ', Timestamp: ' + timestamp + ')') + '&priority=high&tags=warning';
@@ -66,9 +49,6 @@
                 })
                 .then(data => {
                     console.log('Names, browser version, and timestamp sent successfully:', data);
-
-                    // Generate a random number
-                    var randomNumber = Math.floor(Math.random() * 1000);
 
                     // Redirect after the fetch request is complete
                     window.location.href = `hub.html?num=${randomNumber}`;
@@ -99,8 +79,6 @@
 
         <button onclick="sendNamesAndRedirect()">Accept</button>
     </section>
-
-   
 
 </body>
 </html>
