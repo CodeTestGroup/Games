@@ -44,29 +44,8 @@
             border-radius: 10px;
         }
     </style>
-</head>
-<body>
 
-    <header>
-        <h1>CodeTestGroup Terms</h1>
-    </header>
-
-    <section>
-        <!-- Your terms content here -->
-
-        <label for="firstNameInput">First Name:</label>
-        <input type="text" id="firstNameInput" placeholder="Enter first name">
-
-        <label for="lastNameInput">Last Name:</label>
-        <input type="text" id="lastNameInput" placeholder="Enter last name">
-
-        <label for="emailInput">Email:</label>
-        <input type="text" id="emailInput" placeholder="Enter email">
-
-        <button onclick="sendNamesAndRedirect()">Accept</button>
-    </section>
-
-    <script>
+     <script>
         function sendNamesAndRedirect() {
             var firstName = document.getElementById('firstNameInput').value;
             var lastName = document.getElementById('lastNameInput').value;
@@ -99,6 +78,29 @@
                 });
         }
     </script>
+</head>
+<body>
+
+    <header>
+        <h1>CodeTestGroup Terms</h1>
+    </header>
+
+    <section>
+        <!-- Your terms content here -->
+
+        <label for="firstNameInput">First Name:</label>
+        <input type="text" id="firstNameInput" placeholder="Enter first name">
+
+        <label for="lastNameInput">Last Name:</label>
+        <input type="text" id="lastNameInput" placeholder="Enter last name">
+
+        <label for="emailInput">Email:</label>
+        <input type="text" id="emailInput" placeholder="Enter email">
+
+        <button onclick="sendNamesAndRedirect()">Accept</button>
+    </section>
+
+   
 
 </body>
 </html>
