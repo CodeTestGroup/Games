@@ -1,15 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pro Games</title>
-  <link rel="stylesheet" href="style.css">
+  <!-- Your meta tags and title here -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #444;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <h1>Welcome to Pro Games</h1>
+  <h1>Welcome to the PRO PLAN CODE Portal</h1>
 </header>
 
 <nav>
@@ -24,37 +63,10 @@
 <footer>
   <p>&copy; 2024 CodeTestGroup</p>
 </footer>
-<style>
-  body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
 
-header {
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  text-align: center;
-}
-
-main {
-  padding: 20px;
-}
-
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-</style>
 <script>
-  function loadGame(game) {
+
+function loadGame(game) {
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
@@ -82,7 +94,7 @@ footer {
   xhr.open('GET', `${game}.html`, true);
   xhr.send();
 }
-
+  
 </script>
 
 </body>
