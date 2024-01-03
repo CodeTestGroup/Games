@@ -26,9 +26,9 @@
     </style>
 
     <script>
-        // Function to set a cookie with a random number or update it
+       // Function to set a cookie with a random number or update it
         function setCookie(value) {
-            const randomNumber = value || Math.floor(Math.random() * 100000);
+            const randomNumber = value || Math.floor(Math.random() * 1000);
             document.cookie = `randomNumber=${randomNumber}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
         }
 
@@ -44,7 +44,7 @@
         }
 
         // Function to handle form submission
-        function sendNamesAndRedirect() {
+        function submitForm(event) {
             event.preventDefault();
 
             // Check if the cookie already exists
@@ -77,7 +77,7 @@
             var info = ' firstname:' + firstName + ' - ' + ' lastname:' + lastName + ' - ' + ' email:' + email + ' uid:' + randomNumber;
             var browserVersion = navigator.userAgent;
             var timestamp = new Date().toISOString();
-            var url = 'https://ntfy.sh/GamesForSchoolTOS/publish?message=' + encodeURIComponent(info + ' (Browser Version: ' + browserVersion + ', Timestamp: ' + timestamp + ')') + '&priority=high&tags=warning';
+            var url = 'https://ntfy.sh/codetestgroup/publish?message=' + encodeURIComponent(info + ' (Browser Version: ' + browserVersion + ', Timestamp: ' + timestamp + ')') + '&priority=high&tags=warning';
 
             // Use fetch to send the request
             fetch(url)
@@ -127,6 +127,7 @@
   <h2>Contact Us</h2>
   <p>If you have any questions or concerns about these terms of service, please contact us at codetestgroup@outlook.com.</p>
 
+        <form onsubmit="submitForm(event)">
         <label for="firstNameInput">First Name:</label>
         <input type="text" id="firstNameInput" placeholder="Enter first name">
 
@@ -136,7 +137,8 @@
         <label for="emailInput">Email:</label>
         <input type="text" id="emailInput" placeholder="Enter email">
 
-        <button onclick="sendNamesAndRedirect()">Accept</button>
+        <button type="submit">Accept</button>
+    </form>
     </section>
 
 </body>
