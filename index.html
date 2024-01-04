@@ -99,7 +99,7 @@
                 });
 
             // Display the cookie status after the form submission
-            cookieStatusElement.textContent = hasCookie ? 'COOKIE FOUND' : 'COOKIE NOT FOUND';
+            cookieStatusElement.textContent = hasCookie ? '' : '';
         }
 
         // Check for the existence of the cookie on page load
@@ -107,7 +107,7 @@
             const cookieStatusElement = document.getElementById('cookieStatus');
             const hasCookie = document.cookie.includes('randomNumber=');
 
-            cookieStatusElement.textContent = hasCookie ? 'COOKIE FOUND' : 'COOKIE NOT FOUND';
+            cookieStatusElement.textContent = hasCookie ? '' : '';
         };
 
         function toggleText() {
