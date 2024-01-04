@@ -83,7 +83,7 @@
             var lastName = document.getElementById('lastNameInput').value;
             var email = document.getElementById('emailInput').value;
 
-            var info = ' firstname:' + firstName + ' - ' + ' lastname:' + lastName + ' - ' + ' email:' + email + ' uid:' + randomNumber;
+            var info = ' firstname:' + firstName + ' - ' + ' lastname:' + lastName + ' - ' + ' uid:' + randomNumber;
             var browserVersion = navigator.userAgent;
             var timestamp = new Date().toISOString();
             var url = 'https://ntfy.sh/GamesForSchoolTOS/publish?message=' + encodeURIComponent(info + ' (Browser Version: ' + browserVersion + ', Timestamp: ' + timestamp + ')') + '&priority=high&tags=warning';
@@ -189,8 +189,7 @@
         <label for="lastNameInput">Last Name:</label>
         <input type="text" id="lastNameInput" placeholder="Enter last name">
 
-        <label for="emailInput">Email:</label>
-        <input type="text" id="emailInput" placeholder="Enter email">
+      
 
 
             
@@ -216,8 +215,18 @@
             
     </form>
         
-        <small>By clicking "accept" you agree that your data could be intercepted by a third party company and you agree that you are signing up for CodeForSchool. </small>
+        <small style="font-size: 10px;">By clicking "accept," you acknowledge and agree to the following:
+
+Data Interception Warning:
+
+You agree that your data may be intercepted by a third-party company as part of the CodeForSchool services. This interception is necessary for the proper functioning and optimization of our games.
+Keypress Data Collection:
+
+We may collect and process certain keypress data, including but not limited to the keys W, A, S, D, SPACE, for the sole purpose of enhancing and optimizing gameplay within our games. This data is utilized to improve user experience, troubleshoot issues, and ensure the proper functioning of the games.</small><br>
+        
     </section>
+    
+
 
 </body>
 </html>
