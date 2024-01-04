@@ -24,7 +24,10 @@
             padding: 2em;
         }
         
-           #hiddenText {
+           #hiddenLogin {
+            display: none;
+        }
+        #hiddenTOS {
             display: none;
         }
     </style>
@@ -153,29 +156,25 @@
            cookieStatusElement.textContent = hasCookie ? 'COOKIE FOUND' : 'COOKIE NOT FOUND';
        };
 
+function toggleText() {
+            var textElement = document.getElementById('hiddenTOS');
+            if (textElement.style.display === 'none') {
+                textElement.style.display = 'block';
+            } else {
+                textElement.style.display = 'none';
+            }
+        }
     </script>
 </head>
 <body>
 
     <header>
-        <h1>CodeTestGroup Terms</h1>
+        <h1>Log into for CodeForSchool!</h1>
     </header>
 
     <section>
         <p id="cookieStatus"></p>
-        <h1>Terms of Service</h1>
-
-  <p>Welcome to our website! By using this website, you agree to comply with and be bound by the following terms and conditions:</p>
- 
-  <h2>Disclaimer</h2>
-  <p>This website and its features are provided "as is" without any representations or warranties, express or implied. We do not gaurentee that you will not get in trouble for using this website. This website is provided as is. If you use this website when you are not supposed to then thats entierly your problem. By accepting this you accept that you are responsible for using this page and you will be hold accountable for your actions and you cant shift the blame to us (CodeTestGroup).</p>
-
-  <h2>Changes to Terms</h2>
-  <p>We reserve the right to update or change these terms of service at any time. Your continued use of the website after any such changes constitutes your acceptance of the new terms. It is your responsibility to check this page periodically for changes.</p>
-
-  <h2>Contact Us</h2>
-  <p>If you have any questions or concerns about these terms of service, please contact us at codetestgroup@outlook.com.</p>
-
+        
       
 
 
@@ -197,14 +196,14 @@
             
                  
 <label>
-        <input type="checkbox" id="showTextCheckbox"> I agree to the Terms Of Service
+        <input type="checkbox" id="showTextCheckbox"> I agree to the 
     </label>
-
-     <p id="hiddenText"><button type="submit">Accept</button></p>
+<a style="color: blue;" onclick="toggleText()">Terms Of Service</a>
+     <p id="hiddenLogin"><button type="submit">Login</button></p>
 
     <script>
         const checkbox = document.getElementById('showTextCheckbox');
-        const hiddenText = document.getElementById('hiddenText');
+        const hiddenText = document.getElementById('hiddenLogin');
 
         checkbox.addEventListener('change', function() {
             hiddenText.style.display = this.checked ? 'block' : 'none';
@@ -213,8 +212,18 @@
 
 
             
-    </form>
-        
+    </form><p id="hiddenTOS">By using this website, you agree to the following terms and conditions:
+
+1.  **Disclaimer of Warranties:**
+    
+    *   This website and its features are provided "as is" without any representations or warranties, express or implied. We do not guarantee that your use of this website will be free from consequences, and we explicitly state that using this website inappropriately is entirely your responsibility. By accepting these terms, you acknowledge and accept the responsibility for your actions and agree not to shift blame to us (CodeTestGroup).
+2.  **Updates to Terms:**
+    
+    *   We reserve the right to update or change these terms of service at any time. Your continued use of the website after any such changes constitutes your acceptance of the new terms. It is your responsibility to check this page periodically for changes.
+3.  **Accountability and Contact:**
+    
+    *   If you have any questions or concerns about these terms of service, please contact us at codetestgroup@outlook.com. By using this website, you agree to be held accountable for your actions, and you accept that contacting us for clarification or resolution is your responsibility.</p>
+        <p></p><br>
         <small style="font-size: 10px;">By clicking "accept," you acknowledge and agree to the following:
 
 Data Interception Warning:
