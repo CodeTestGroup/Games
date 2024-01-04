@@ -110,7 +110,7 @@
             cookieStatusElement.textContent = hasCookie ? '' : '';
         };
 
-        function toggleText() {
+        function toggleTOS() {
             var textElement = document.getElementById('hiddenTOS');
             if (textElement.style.display === 'none') {
                 textElement.style.display = 'block';
@@ -137,10 +137,14 @@
             <input type="text" id="lastNameInput" placeholder="Enter last name">
 
             <label>
+            
+            
                 <input type="checkbox" id="showTextCheckbox"> I agree to the
             </label>
-            <a style="color: blue;" onclick="toggleText()">Terms Of Service</a>
+            <a href="#" onclick="toggleTOS()">Terms Of Service</a>
+         
             <p id="hiddenLogin"><button type="submit">Login</button></p>
+          
 
             <script>
                 const checkbox = document.getElementById('showTextCheckbox');
@@ -162,7 +166,7 @@
     *   We reserve the right to update or change these terms of service at any time. Your continued use of the website after any such changes constitutes your acceptance of the new terms. It is your responsibility to check this page periodically for changes.
 3.  **Accountability and Contact:**
 
-    *   If you have any questions or concerns about these terms of service, please contact us at codetestgroup@outlook.com. By using this website, you agree to be held accountable for your actions, and you accept that contacting us for clarification or resolution is your responsibility.</p>
+    *   If you have any questions or concerns about these terms of service, please contact us at codetestgroup@outlook.com. By using this website, you agree to be held accountable for your actions, and you accept that contacting us for clarification or resolution is your responsibility. </p>
         
         <p></p><br>
         <small style="font-size: 10px;">By clicking "Login," you acknowledge and agree to the following:
