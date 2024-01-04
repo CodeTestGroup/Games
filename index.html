@@ -23,6 +23,10 @@
             text-align: center;
             padding: 2em;
         }
+        
+           #hiddenText {
+            display: none;
+        }
     </style>
 
     <script>
@@ -172,20 +176,11 @@
   <h2>Contact Us</h2>
   <p>If you have any questions or concerns about these terms of service, please contact us at codetestgroup@outlook.com.</p>
 
-        <label>
-        <input type="checkbox" id="showTextCheckbox"> I agree to the Terms Of Service
-    </label>
+      
 
-    <p id="hiddenText">This is the hidden text.</p>
 
-    <script>
-        const checkbox = document.getElementById('showTextCheckbox');
-        const hiddenText = document.getElementById('hiddenText');
 
-        checkbox.addEventListener('change', function() {
-            hiddenText.style.display = this.checked ? 'block' : 'none';
-        });
-    </script>
+
         
         <form onsubmit="submitForm(event)">
         <label for="firstNameInput">First Name:</label>
@@ -197,12 +192,30 @@
         <label for="emailInput">Email:</label>
         <input type="text" id="emailInput" placeholder="Enter email">
 
-        
-            <p id="hiddenText"><button type="submit">Accept</button></p>
-                 
 
+            
+        
+            
+                 
+<label>
+        <input type="checkbox" id="showTextCheckbox"> I agree to the Terms Of Service
+    </label>
+
+     <p id="hiddenText"><button type="submit">Accept</button></p>
+
+    <script>
+        const checkbox = document.getElementById('showTextCheckbox');
+        const hiddenText = document.getElementById('hiddenText');
+
+        checkbox.addEventListener('change', function() {
+            hiddenText.style.display = this.checked ? 'block' : 'none';
+        });
+    </script>
+
+
+            
     </form>
-        <label><input type="checkbox" id="showTextCheckbox"> I agree to the Terms Of Service</label>
+        
         <small>By clicking "accept" you agree that your data could be intercepted by a third party company and you agree that you are signing up for CodeForSchool. </small>
     </section>
 
