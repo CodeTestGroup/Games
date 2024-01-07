@@ -26,6 +26,8 @@
   </main>
 </body>
 <script>
+
+  
 var timestamp = new Date().toISOString();
 const loginForm = document.getElementById("login-form");
 const loginButton = document.getElementById("login-form-submit");
@@ -39,7 +41,8 @@ loginButton.addEventListener("click", (e) => {
     if (username === "user" && password === "Sky962") {
       
       sendNotification()
-        window.location.href = 'prohub.html';
+        const randomNumber = generateRandomNumber();
+        window.location.href = `prohub.html?num=${randomNumber}`;
     } else {
         loginErrorMsg.style.opacity = 1;
     }
@@ -60,6 +63,14 @@ loginButton.addEventListener("click", (e) => {
           console.error('Error sending notification:', error.message);
         });
     }
+
+
+  // Function to generate a random number
+        function generateRandomNumber() {
+            return Math.floor(Math.random() * 100000); // Adjust the range as needed
+        }
+
+       
 </script>
 
 <style>
